@@ -7,7 +7,9 @@ app = Flask(__name__)
 app.debug = True
 
 students = {s.id: s for s in [
-    Student("Pato", "MrPatiwi", True)
+    Student("Patricio Lopez", "MrPatiwi", True),
+    Student("Jaime Castro", "jecastro1", False),
+    Student("Belen Saldias", "bcsaldias", False)
 ]}
 
 
@@ -20,7 +22,7 @@ def index():
 @app.route("/students", methods=['GET', 'POST'])
 def students_index():
     if request.method == 'GET':
-        items = [s.serialize() for (identifier, s) in students.iteritems()]
+        items = [s.serialize() for (identifier, s) in students.items()]
         return jsonify(students=items)
 
     elif request.method == 'POST':
