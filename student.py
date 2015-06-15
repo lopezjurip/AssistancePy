@@ -4,7 +4,7 @@ class Student:
     def __init__(self, name, username, assistance=False):
         Student.students_id += 1
 
-        self.id = str(Student.students_id)
+        self.id = Student.students_id
         self.name = name
         self.username = username
         self.assistance = assistance
