@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, render_template, Response
 from student import Student
 
 # Initialization
@@ -14,7 +14,7 @@ students = {s.id: s for s in [
 # Controllers
 @app.route("/")
 def index():
-    return app.send_static_file('index.html')
+    return render_template('index.html')
 
 
 @app.route("/students", methods=['GET', 'POST'])
@@ -70,5 +70,5 @@ def student(student_id):
 if __name__ == "__main__":
     app.run(
         host='0.0.0.0',
-        port=int(os.environ.get("PORT", 5000))
+        port=int(os.environ.get("PORT", 5001))
     )
