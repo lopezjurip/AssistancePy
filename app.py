@@ -13,6 +13,10 @@ students = {s.id: s for s in [
 ]}
 
 
+def param_to_bool(data):
+    return data is not None or data.lower() == 'true'
+
+
 # Controllers
 @app.route("/")
 def index():
@@ -31,11 +35,14 @@ def students_index():
         assistance = request.values.get('assistance')
 
         if name and username and assistance:
-            student = Student(name, username, assistance)
-            students[student.id] = student
-            return jsonify(student.serialize()), 201
-        else:
-            return Response(status=400)
+            unique = any(v.username.lower() == username.lower()
+                         for k, v in students.items())
+            if unique:
+                student = Student(name, username, assistance)
+                students[student.id] = student
+                return jsonify(student.serialize()), 201
+
+        return Response(status=400)
 
     else:
         return Response(status=405)
@@ -59,10 +66,8 @@ def student(student_id):
 
     elif request.method == 'PATCH':
         student = students[student_id]
-        student.name = request.args.get('name')
-        student.username = request.args.get('username')
-        student.assistance = request.args.get('assistance')
-        return jsonify(student), 202
+        student.assistance = param_to_bool(request.args.get('assistance'))
+        return jsonify(student.serialize()), 202
 
     else:
         return Response(status=405)
