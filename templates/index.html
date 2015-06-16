@@ -104,17 +104,18 @@
           <li><code>assistance</code>: <i>boolean (true/false)</i> indicando si el alumno   asistió o no. </li>
       </ul>
 
-      <p>Si haces un <code>POST</code> a alguna entidad ya creada, te retornará un <code>STATUS: 405 METHOD NOT ALLOWED</code>. Debes hacer una llamada <code>PATCH</code> para esos casos.</p>
+      <p>Si haces un <code>POST</code> a alguna entidad ya creada, te retornará un <code>STATUS: 405 METHOD NOT ALLOWED</code>. Debes hacer una llamada <code>PATCH</code> para esos casos. Revisar la sección <strong>"Modificar entrada"</strong></p>
 
       <p>Si se crea satisfactoriamente la entidad, te retornará un JSON idéntico al del método <code>GET</code> pero con un código <code>STATUS: 201 CREATED</code></p>
 
 
       <h3>Modificar entrada</h3>
 
-      <p>Debemos conocer el <code>id</code> de la entrada a modificar. Luego basta con hacer una petición <code>PATCH</code> a la URL del recurso, por ejemplo <a href="http://assistance-py.herokuapp.com/students/1">http://assistance-py.herokuapp.com/students/1</a> con los parámetros a modificar, estos pueden ser: <i>name, username</i> y <i>assistance</i></p>
+      <p>Debemos conocer el <code>id</code> de la entrada a modificar. Luego basta con hacer una petición <code>PATCH</code> a la URL del recurso, por ejemplo <a href="http://assistance-py.herokuapp.com/students/2">http://assistance-py.herokuapp.com/students/2</a> con los parámetros a modificar, estos pueden ser: <i>assistance</i></p>
 
       <p>Retornará el JSON del recurso con sus valores modificados y el código <code>STATUS: 202 ACCEPTED</code></p>
 
     </div>
+    <div class="panel-footer">Plataforma ficticia desarrollada por Patricio López en Python Flask y Bootstrap. Montada en <a href="http://heroku.com">Heroku</a>.</div>
   </body>
 </html>
