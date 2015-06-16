@@ -14,7 +14,7 @@ students = {s.id: s for s in [
 
 
 def param_to_bool(data):
-    return data is not None or data.lower() == 'true'
+    return data is not None and data.lower() == 'true'
 
 
 # Controllers
@@ -30,12 +30,12 @@ def students_index():
         return jsonify(students=items)
 
     elif request.method == 'POST':
-        name = request.values.get('name')
-        username = request.values.get('username')
-        assistance = request.values.get('assistance')
+        name = request.args.get('name')
+        username = request.args.get('username')
+        assistance = param_to_bool(request.args.get('assistance'))
 
         if name and username and assistance:
-            unique = any(v.username.lower() == username.lower()
+            unique = not any(v.username.lower() == username.lower()
                          for k, v in students.items())
             if unique:
                 student = Student(name, username, assistance)
