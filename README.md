@@ -1,4 +1,5 @@
 # AssistencePy
+> Proyecto ficticio para una Actividad en Clase para el ramo Programación Avanzada (IIC2233)
 
 El repositorio propio del proyecto está en https://github.com/mrpatiwi/AssistancePy
 
